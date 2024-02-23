@@ -1,56 +1,53 @@
 {
   "3": {
     "inputs": {
-      "seed": 156680208700286,
-      "steps": 8,
-      "cfg": 6.5,
-      "sampler_name": "euler_ancestral",
-      "scheduler": "normal",
-      "denoise": 0.5,
+      "seed": 1631591050,
+      "steps": 30,
+      "cfg": 4.5,
+      "sampler_name": "ddpm",
+      "scheduler": "karras",
+      "denoise": 1,
       "model": [
-        "4",
+        "60",
         0
       ],
       "positive": [
-        "6",
-        0
+        "60",
+        1
       ],
       "negative": [
-        "7",
-        0
+        "60",
+        2
       ],
       "latent_image": [
-        "10",
+        "5",
         0
       ]
     },
-    "class_type": "KSampler"
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
   },
   "4": {
     "inputs": {
-      "ckpt_name": "aniverse_thxEd14Pruned.safetensors"
+      "ckpt_name": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors"
     },
-    "class_type": "CheckpointLoaderSimple"
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
   },
-  "6": {
+  "5": {
     "inputs": {
-      "text": "beautiful scenery nature glass bottle landscape, , purple galaxy bottle,",
-      "clip": [
-        "4",
-        1
-      ]
+      "width": 1016,
+      "height": 1016,
+      "batch_size": 1
     },
-    "class_type": "CLIPTextEncode"
-  },
-  "7": {
-    "inputs": {
-      "text": "text, watermark, nsfw, nude",
-      "clip": [
-        "4",
-        1
-      ]
-    },
-    "class_type": "CLIPTextEncode"
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
   },
   "8": {
     "inputs": {
@@ -63,36 +60,123 @@
         2
       ]
     },
-    "class_type": "VAEDecode"
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
   },
-  "9": {
+  "11": {
     "inputs": {
-      "filename_prefix": "ComfyUI",
+      "instantid_file": "ip-adapter.bin"
+    },
+    "class_type": "InstantIDModelLoader",
+    "_meta": {
+      "title": "Load InstantID Model"
+    }
+  },
+  "13": {
+    "inputs": {
+      "image": "P9221383.JPG",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "15": {
+    "inputs": {
       "images": [
         "8",
         0
       ]
     },
-    "class_type": "SaveImage"
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
   },
-  "10": {
+  "16": {
     "inputs": {
-      "pixels": [
+      "control_net_name": "instantid/diffusion_pytorch_model.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "38": {
+    "inputs": {
+      "provider": "CPU"
+    },
+    "class_type": "InstantIDFaceAnalysis",
+    "_meta": {
+      "title": "InstantID Face Analysis"
+    }
+  },
+  "39": {
+    "inputs": {
+      "text": "comic character. graphic illustration, comic art, graphic novel art, vibrant, highly detailed",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "40": {
+    "inputs": {
+      "text": "photograph, deformed, glitch, noisy, realistic, stock photo",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "60": {
+    "inputs": {
+      "weight": 0.8,
+      "start_at": 0,
+      "end_at": 1,
+      "instantid": [
         "11",
         0
       ],
-      "vae": [
+      "insightface": [
+        "38",
+        0
+      ],
+      "control_net": [
+        "16",
+        0
+      ],
+      "image": [
+        "13",
+        0
+      ],
+      "model": [
         "4",
-        2
+        0
+      ],
+      "positive": [
+        "39",
+        0
+      ],
+      "negative": [
+        "40",
+        0
       ]
     },
-    "class_type": "VAEEncode"
-  },
-  "11": {
-    "inputs": {
-      "image": "test_api.jpg",
-      "choose file to upload": "image"
-    },
-    "class_type": "LoadImage"
+    "class_type": "ApplyInstantID",
+    "_meta": {
+      "title": "Apply InstantID"
+    }
   }
 }
