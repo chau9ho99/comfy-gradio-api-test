@@ -10,6 +10,7 @@ from style_template import styles
 from PIL import Image
 from typing import Tuple
 import logging
+import traceback  # Add this import
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -31,13 +32,13 @@ def start_queue(prompt_workflow):
     
     p = {"prompt": prompt_workflow}
     data = json.dumps(p).encode('utf-8')
-    response = requests.post(URL, data=data)
-
-    if response.status_code != 200:
-        logging.error('API request to start queue failed with status code %s: %s',
-                      response.status_code, response.text)
-    else:
-        logging.info('API request to start queue successful.')
+    try:  # Add a try-except block
+        response = requests.post(URL, data=data)
+        response.raise_for_status()  # Add this line to throw an exception for erroneous status codes
+        logging.info('API request to start queue successful. Response: %s', response.json())  # Log the whole response
+    except Exception as e:
+        logging.error('API request to start queue failed. Error: %s', str(e))
+        logging.error('Stack Trace: %s', traceback.format_exc())  # Add this line to log the stack trace
 
 def apply_style(
     style_name: str, positive: str, negative: str = ""
@@ -87,7 +88,8 @@ def generate_image(input_image, input_text,style_name):
     logging.info('Started queue with seed %d', prompt["3"]["inputs"]["seed"])
 
     previous_image = get_latest_image(OUTPUT_DIR)
-    timeout = 140 
+    timeout = 180 
+    start_time = time.time()
     # Wait for new image generation
     while True:
         latest_image = get_latest_image(OUTPUT_DIR)
