@@ -76,7 +76,7 @@
   },
   "13": {
     "inputs": {
-      "image": "P9221383.JPG",
+      "image": "_124355482_gettyimages-1177698205.jpg",
       "upload": "image"
     },
     "class_type": "LoadImage",
@@ -177,6 +177,19 @@
     "class_type": "ApplyInstantID",
     "_meta": {
       "title": "Apply InstantID"
+    }
+  },
+  "61": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
     }
   }
 }
