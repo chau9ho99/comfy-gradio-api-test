@@ -87,8 +87,9 @@ def gallery_images():
 def clear_previous_session():
     files = glob.glob(os.path.join(OUTPUT_DIR, "*"))
     for f in files:
+        os.chmod(f, 0o777)  # Change the file permissions
         os.remove(f)
-
+        
 description = """
 # 《創意文字藝術轉換器》
 
