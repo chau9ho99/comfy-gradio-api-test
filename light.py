@@ -63,12 +63,16 @@ def generate_image(input_text, style_choice="photo-hdr", use_base_style=False):
     start_queue(prompt)
 
     previous_image = get_latest_image(OUTPUT_DIR)
-        
     while True:
         latest_image = get_latest_image(OUTPUT_DIR)
         if latest_image != previous_image:
-            break
-        time.sleep(1)
+            try:
+                Image.open(latest_image)  # Try to open the image file
+                break  # If no error is thrown, break the loop
+            except IOError:
+                pass  # If an error is thrown, ignore it and keep waiting
+        time.sleep(0.1)  # Reduce the sleep time to make it more responsive    
+    
 
     image_paths = [get_latest_image(OUTPUT_DIR)] + gallery_images()
     return image_paths[0], image_paths[1:]
