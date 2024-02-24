@@ -1,4 +1,4 @@
-﻿import os
+import os
 import json
 import time
 import glob
@@ -73,7 +73,8 @@ def generate_image(input_text, style_choice="photo-hdr", use_base_style=False):
                 pass  # If an error is thrown, ignore it and keep waiting
         time.sleep(0.1)  # Reduce the sleep time to make it more responsive    
     
-    image_paths = [get_latest_image(OUTPUT_DIR) + '?v=' + str(time.time())] + gallery_images()
+
+    image_paths = [get_latest_image(OUTPUT_DIR)] + gallery_images()
     return image_paths[0], image_paths[1:]
 
 def gallery_images():
