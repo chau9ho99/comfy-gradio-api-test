@@ -7,10 +7,9 @@ import requests
 import gradio as gr
 from PIL import Image
 
-URL = "http://192.168.50.144:8188/prompt"
-INPUT_DIR = "C:\\AI Program\\ComfyUI_windows_portable\\comfy-gradio-api\\Input"
-OUTPUT_DIR = "C:\\AI Program\\ComfyUI_windows_portable\\ComfyUI\\output\\SDXL_LIGHT"
-
+URL = "http://35.211.102.39:8188/prompt"
+INPUT_DIR = "/home/dryma/ComfyUI/input"
+OUTPUT_DIR = "/home/dryma/ComfyUI/output/SDXL_LIGHT"
 cached_seed = 0
 
     
