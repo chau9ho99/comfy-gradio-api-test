@@ -12,17 +12,17 @@ INPUT_DIR = "/ComfyUI/input"
 OUTPUT_DIR = "/ComfyUI/output/SDXL_LIGHT"
 cached_seed = 0
 
-    
-def start_queue(prompt_workflow):
+ def start_queue(prompt_workflow):
     p = {"prompt": prompt_workflow}
     data = json.dumps(p).encode('utf-8')
     requests.post(URL, data=data)
 
 def get_style_names(json_file):
     try:
-        with open("sdxl_styles_all.json", "r") as file:
+        with open(json_file, "r", encoding="utf-8") as file:
             data = json.load(file)
-        return [item.get('name') for item in data]
+            categories = data["categories"]
+            return [(value, key) for category in categories for key, value in category.items()]
     except Exception as e:
         print(f"Error: {str(e)}")
         return []
@@ -44,11 +44,9 @@ def generate_image(input_text, style_choice="photo-hdr", use_base_style=False):
         return [get_latest_image(OUTPUT_DIR)] + gallery_images()
 
     cached_seed = prompt["3"]["inputs"]["seed"]
-    
-    # if use_base_style is checked, then you overwrite the style_choice variable
-  
+
     if isinstance(style_choice, list) and len(style_choice) == 0:
-        style_choice = "photo-hdr" # Or an empty string, depends on further requirements
+        style_choice = "photo-hdr"  # Or another appropriate default value
 
     if use_base_style:
         style_choice = "base"
@@ -63,16 +61,12 @@ def generate_image(input_text, style_choice="photo-hdr", use_base_style=False):
     start_queue(prompt)
 
     previous_image = get_latest_image(OUTPUT_DIR)
+        
     while True:
         latest_image = get_latest_image(OUTPUT_DIR)
         if latest_image != previous_image:
-            try:
-                Image.open(latest_image)  # Try to open the image file
-                break  # If no error is thrown, break the loop
-            except IOError:
-                pass  # If an error is thrown, ignore it and keep waiting
-        time.sleep(0.1)  # Reduce the sleep time to make it more responsive    
-    
+            break
+        time.sleep(1)
 
     image_paths = [get_latest_image(OUTPUT_DIR)] + gallery_images()
     return image_paths[0], image_paths[1:]
@@ -91,9 +85,8 @@ def gallery_images():
 def clear_previous_session():
     files = glob.glob(os.path.join(OUTPUT_DIR, "*"))
     for f in files:
-        os.chmod(f, 0o777)  # Change the file permissions
         os.remove(f)
-        
+
 description = """
 # 《創意文字藝術轉換器》
 
@@ -112,15 +105,15 @@ description = """
 希望呢度嘅介紹同指南對你有幫助。如果你有更多嘅問題，請隨時問我，我會好樂意答你。
 """
 
-style_choice = gr.Dropdown(choices=get_style_names("sdxl_styles_all.json"), label="Style Choice")
 use_base_style = gr.Checkbox(label="Use base style")
+style_names = get_style_names("sdxl_styles_zh.json")
+style_choice = gr.Dropdown(choices=style_names, label="Style Choice")
 
 clear_previous_session()
 
-
 demo = gr.Interface(
     fn=generate_image, 
-    inputs=[gr.Textbox(label="Text Input"), style_choice,use_base_style], 
+    inputs=[gr.Textbox(label="Text Input"), style_choice, use_base_style], 
     outputs=[
         gr.Image(label="Latest Image"),
         gr.Gallery(label="Gallery Images")
