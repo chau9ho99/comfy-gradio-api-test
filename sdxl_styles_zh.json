@@ -1,0 +1,271 @@
+{
+  "categories": [
+    {
+      "ads-advertising": "廣告風格"
+    },
+    {
+      "ads-automotive": "汽車廣告"
+    },
+    {
+      "ads-corporate": "企業廣告"
+    },
+    {
+      "ads-fashion editorial": "時尚專欄廣告"
+    },
+    {
+      "ads-food photography": "食品攝影廣告"
+    },
+    {
+      "ads-gourmet food photography": "美食攝影廣告"
+    },
+    {
+      "ads-luxury": "奢侈品廣告"
+    },
+    {
+      "ads-real estate": "房地產廣告"
+    },
+    {
+      "ads-retail": "零售廣告"
+    },
+    {
+      "artstyle-abstract": "抽象藝術風格"
+    },
+    {
+      "artstyle-abstract expressionism": "抽象表現主義風格"
+    },
+    {
+      "artstyle-art deco": "裝飾藝術風格"
+    },
+    {
+      "artstyle-art nouveau": "新藝術風格"
+    },
+    {
+      "artstyle-constructivist": "構成主義風格"
+    },
+    {
+      "artstyle-cubist": "立體主義風格"
+    },
+    {
+      "artstyle-expressionist": "表現主義風格"
+    },
+    {
+      "artstyle-graffiti": "塗鴉藝術風格"
+    },
+    {
+      "artstyle-hyperrealism": "超現實主義風格"
+    },
+    {
+      "artstyle-impressionist": "印象派風格"
+    },
+    {
+      "artstyle-pointillism": "點彩主義風格"
+    },
+    {
+      "artstyle-pop art": "流行藝術風格"
+    },
+    {
+      "artstyle-psychedelic": "迷幻風格"
+    },
+    {
+      "artstyle-renaissance": "文藝復興風格"
+    },
+    {
+      "artstyle-steampunk": "蒸汽龐克風格"
+    },
+    {
+      "artstyle-surrealist": "超現實主義風格"
+    },
+    {
+      "artstyle-typography": "字體藝術風格"
+    },
+    {
+      "artstyle-watercolor": "水彩畫風格"
+    },
+    {
+      "futuristic-biomechanical": "生物機械風格"
+    },
+    {
+      "futuristic-biomechanical cyberpunk": "生物機械赛博朋克風格"
+    },
+    {
+      "futuristic-cybernetic": "電子機械風格"
+    },
+    {
+      "futuristic-cybernetic robot": "電子機械機器人風格"
+    },
+    {
+      "futuristic-cyberpunk cityscape": "赛博朋克城市風景風格"
+    },
+    {
+      "futuristic-futuristic": "未來主義風格"
+    },
+    {
+      "futuristic-retro cyberpunk": "復古赛博朋克風格"
+    },
+    {
+      "futuristic-retro futurism": "復古未來主義風格"
+    },
+    {
+      "futuristic-sci-fi": "科幻風格"
+    },
+    {
+      "futuristic-vaporwave": "蒸氣波風格"
+    },
+    {
+      "game-bubble bobble": "泡泡龍風格"
+    },
+    {
+      "game-cyberpunk game": "赛博朋克遊戲風格"
+    },
+    {
+      "game-fighting game": "格鬥遊戲風格"
+    },
+    {
+      "game-gta": "犯罪都市風格"
+    },
+    {
+      "game-mario": "馬力歐風格"
+    },
+    {
+      "game-minecraft": "我的世界風格"
+    },
+    {
+      "game-pokemon": "寶可夢風格"
+    },
+    {
+      "game-retro arcade": "復古街機風格"
+    },
+    {
+      "game-retro game": "復古遊戲風格"
+    },
+    {
+      "game-rpg fantasy game": "角色扮演遊戲風格"
+    },
+    {
+      "game-strategy game": "策略遊戲風格"
+    },
+    {
+      "game-streetfighter": "街頭霸王風格"
+    },
+    {
+      "game-zelda": "塞爾達傳說風格"
+    },
+    {
+      "misc-architectural": "建築風格"
+    },
+    {
+      "misc-disco": "迪斯可風格"
+    },
+    {
+      "misc-dreamscape": "夢境風格"
+    },
+    {
+      "misc-dystopian": "異世界風格"
+    },
+    {
+      "misc-fairy tale": "童話風格"
+    },
+    {
+      "misc-gothic": "哥特風格"
+    },
+    {
+      "misc-grunge": "垃圾風格"
+    },
+    {
+      "misc-horror": "恐怖風格"
+    },
+    {
+      "misc-kawaii": "可愛風格"
+    },
+    {
+      "misc-lovecraftian": "洛夫克拉夫特風格"
+    },
+    {
+      "misc-macabre": "怪誕風格"
+    },
+    {
+      "misc-manga": "漫畫風格"
+    },
+    {
+      "misc-metropolis": "大都會風格"
+    },
+    {
+      "misc-minimalist": "極簡風格"
+    },
+    {
+      "misc-monochrome": "單色風格"
+    },
+    {
+      "misc-nautical": "海洋風格"
+    },
+    {
+      "misc-space": "太空風格"
+    },
+    {
+      "misc-stained glass": "彩色玻璃風格"
+    },
+    {
+      "misc-techwear fashion": "科技風格時裝"
+    },
+    {
+      "misc-tribal": "部落風格"
+    },
+    {
+      "misc-zentangle": "禪繞風格"
+    },
+    {
+      "papercraft-collage": "拼貼紙藝風格"
+    },
+    {
+      "papercraft-flat papercut": "扁平剪紙風格"
+    },
+    {
+      "papercraft-kirigami": "利器紙藝風格"
+    },
+    {
+      "papercraft-paper mache": "紙漿造型風格"
+    },
+    {
+      "papercraft-paper quilling": "紙卷細工風格"
+    },
+    {
+      "papercraft-papercut collage": "剪紙拼貼風格"
+    },
+    {
+      "papercraft-papercut shadow box": "剪紙光影盒風格"
+    },
+    {
+      "papercraft-stacked papercut": "疊層剪紙風格"
+    },
+    {
+      "papercraft-thick layered papercut": "厚層剪紙風格"
+    },
+    {
+      "photo-alien": "外星風格攝影"
+    },
+    {
+      "photo-film noir": "黑色電影風格攝影"
+    },
+    {
+      "photo-glamour": "華麗風格攝影"
+    },
+    {
+      "photo-hdr": "高動態範圍攝影"
+    },
+    {
+      "photo-iphone photographic": "iPhone攝影風格"
+    },
+    {
+      "photo-long exposure": "長曝光攝影風格"
+    },
+    {
+      "photo-neon noir": "霓虹暗黑風格攝影"
+    },
+    {
+      "photo-silhouette": "輪廓風格攝影"
+    },
+    {
+      "photo-tilt-shift": "傾斜位移風格攝影"
+    }
+  ]
+}
