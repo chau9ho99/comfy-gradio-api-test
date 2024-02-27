@@ -7,9 +7,9 @@ import requests
 import gradio as gr
 from PIL import Image
 
-URL = "http://35.211.102.39:8188/prompt"
-INPUT_DIR = "/home/dryma/ComfyUI/input"
-OUTPUT_DIR = "/home/dryma/ComfyUI/output/SDXL_LIGHT"
+URL = "http://34.70.55.198:8188/prompt"
+INPUT_DIR = "/ComfyUI/input"
+OUTPUT_DIR = "/ComfyUI/output/SDXL_LIGHT"
 cached_seed = 0
 
     
