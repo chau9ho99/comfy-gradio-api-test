@@ -16,9 +16,9 @@ import traceback  # Add this import
 logging.basicConfig(level=logging.INFO)
 
 
-URL = "http://35.211.102.39:8188/prompt"
-INPUT_DIR = "/home/dryma/ComfyUI/input"
-OUTPUT_DIR = "/home/dryma/ComfyUI/output"
+URL = "http://34.70.55.198:8188/prompt"
+INPUT_DIR = "/ComfyUI/input"
+OUTPUT_DIR = "/ComfyUI/output"
 STYLE_NAMES = list(styles.keys())
 DEFAULT_STYLE_NAME = "Vibrant Color"
 cached_seed = 0
