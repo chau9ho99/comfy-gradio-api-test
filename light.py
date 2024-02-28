@@ -12,7 +12,7 @@ INPUT_DIR = "/ComfyUI/input"
 OUTPUT_DIR = "/ComfyUI/output/SDXL_LIGHT"
 cached_seed = 0
 
- def start_queue(prompt_workflow):
+def start_queue(prompt_workflow):
     p = {"prompt": prompt_workflow}
     data = json.dumps(p).encode('utf-8')
     requests.post(URL, data=data)
