@@ -8,8 +8,8 @@ import gradio as gr
 from PIL import Image
 
 URL = "http://34.70.55.198:8188/prompt"
-INPUT_DIR = "/ComfyUI/input"
-OUTPUT_DIR = "/ComfyUI/output/SDXL_LIGHT"
+INPUT_DIR = "/home/chau9ho/ComfyUI/input"
+OUTPUT_DIR = "/home/chau9ho/ComfyUI/output/SDXL_LIGHT"
 cached_seed = 0
 
 def start_queue(prompt_workflow):
