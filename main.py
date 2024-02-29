@@ -21,6 +21,10 @@ def generate():
     # 將圖片轉換為 base64
     image_data = []
     for image_path in image_paths:
+        # If the image path is a list, take the first element
+        if isinstance(image_path, list):
+            image_path = image_path[0]
+        
         with open(image_path, "rb") as img_file:
             img_bytes = img_file.read()
         img_b64 = base64.b64encode(img_bytes).decode('utf-8')
