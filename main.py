@@ -16,22 +16,30 @@ def generate():
     style_choice = data['style_choice']
     use_base_style = data['use_base_style']
 
-    image_paths = generate_image(input_text, style_choice, use_base_style)
+    main_image, gallery_images = generate_image(input_text, style_choice, use_base_style)
 
-    # 將圖片轉換為 base64
-    image_data = []
-    for image_path in image_paths:
-        # If the image path is a list, take the first element
-        if isinstance(image_path, list):
-            image_path = image_path[0]
-        
-        with open(image_path, "rb") as img_file:
-            img_bytes = img_file.read()
-        img_b64 = base64.b64encode(img_bytes).decode('utf-8')
-        image_data.append(img_b64)
+    # 如果主图像不存在，则返回错误
+    if not main_image:
+        return jsonify({'error': 'No main image generated.'}), 500
+
+    # 將主要图像轉換為 base64
+    with open(main_image, "rb") as img_file:
+        img_bytes = img_file.read()
+    main_img_b64 = base64.b64encode(img_bytes).decode('utf-8')
+
+    # 將画廊图像轉換為 base64
+    gallery_data = []
+    for image_path in gallery_images:
+        if image_path:  # 确保 image_path 不为空
+            with open(image_path, "rb") as img_file:
+                img_bytes = img_file.read()
+            img_b64 = base64.b64encode(img_bytes).decode('utf-8')
+            gallery_data.append(img_b64)
+        else:
+            print("Warning: An image path in gallery_images was empty.")
 
     # 回傳 base64 編碼的圖片
-    return jsonify({'images': image_data})
+    return jsonify({'main_image': main_img_b64, 'gallery_images': gallery_data})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
