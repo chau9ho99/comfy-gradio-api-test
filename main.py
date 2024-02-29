@@ -42,4 +42,4 @@ def generate():
     return jsonify({'main_image': main_img_b64, 'gallery_images': gallery_data})
 
 if __name__ == "__main__":
-  app.run(host="0.0.0.0", port=5000, methods=['POST'])
+  app.run(host="0.0.0.0", port=5000)
