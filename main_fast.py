@@ -8,7 +8,7 @@ import base64
 
 app = Flask(__name__)
 
-@app.route('/generate', methods=['POST'])
+
 @app.route('/generate', methods=['POST'])
 def generate():
     data = request.get_json()
