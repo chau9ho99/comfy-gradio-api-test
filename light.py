@@ -47,7 +47,7 @@ def get_latest_image(folder):
     image_files.sort(key=lambda x: os.path.getmtime(os.path.join(folder, x)))
     latest_image = os.path.join(folder, image_files[-1]) if image_files else None
     return latest_image
-def generate_image(input_text, style_choice="photo-hdr", use_base_style=False, aspect_ratio=None)
+def generate_image(input_text, style_choice="photo-hdr", use_base_style=False, aspect_ratio=None):
 
     with open("light.json", "r") as file_json:
         prompt = json.load(file_json)
