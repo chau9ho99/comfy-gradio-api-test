@@ -11,7 +11,21 @@ URL = "http://34.70.55.198:8188/prompt"
 INPUT_DIR = "/home/chau9ho/ComfyUI/input"
 OUTPUT_DIR = "/home/chau9ho/ComfyUI/output/SDXL_LIGHT"
 cached_seed = 0
-
+aspect_ratios = [
+    "1:1  - 1024x1024 square", 
+    "2:3  - 832x1216 portrait", 
+    "3:4  - 896x1152 portrait", 
+    "5:8  - 768x1216 portrait", 
+    "9:16 - 768x1344 portrait", 
+    "9:19 - 704x1472 portrait", 
+    "9:21 - 640x1536 portrait",
+    "3:2  - 1216x832 landscape", 
+    "4:3  - 1152x896 landscape", 
+    "8:5  - 1216x768 landscape", 
+    "16:9 - 1344x768 landscape", 
+    "19:9 - 1472x704 landscape", 
+    "21:9 - 1536x640 landscape"
+]
 def start_queue(prompt_workflow):
     p = {"prompt": prompt_workflow}
     data = json.dumps(p).encode('utf-8')
@@ -34,7 +48,7 @@ def get_latest_image(folder):
     latest_image = os.path.join(folder, image_files[-1]) if image_files else None
     return latest_image
 
-def generate_image(input_text, style_choice="photo-hdr", use_base_style=False):
+def generate_image(input_text, style_choice="photo-hdr", use_base_style=False, aspect_ratio=None):
     with open("light.json", "r") as file_json:
         prompt = json.load(file_json)
         
@@ -55,7 +69,7 @@ def generate_image(input_text, style_choice="photo-hdr", use_base_style=False):
     print(f"Input style value: {style_choice}")
     prompt["17"]["inputs"]["text_positive"] = input_text
     prompt["17"]["inputs"]["style"] = style_choice
-
+    prompt["21"]["inputs"]["aspectRatio"] = aspect_ratio
     with open("light.json", "w") as temp_file:
         json.dump(prompt, temp_file)
 
@@ -86,12 +100,13 @@ description = """
 use_base_style = gr.Checkbox(label="Use base style")
 style_names = get_style_names("sdxl_styles_zh.json")
 style_choice = gr.Dropdown(choices=style_names, label="Style Choice")
+aspect_ratio = gr.Dropdown(choices=aspect_ratios, label="Aspect Ratio")
 
 clear_previous_session()
 
 demo = gr.Interface(
     fn=generate_image, 
-    inputs=[gr.Textbox(label="Text Input"), style_choice, use_base_style], 
+    inputs=[gr.Textbox(label="Text Input"), style_choice, use_base_style,aspect_ratio], 
     outputs=gr.Image(label="Latest Image"),
     description=description,
 )
