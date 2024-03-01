@@ -2,6 +2,7 @@ import os
 import json
 import time
 import random
+import glob
 import requests
 import gradio as gr
 from PIL import Image
