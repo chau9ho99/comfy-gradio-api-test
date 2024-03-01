@@ -16,8 +16,9 @@ def generate():
     input_text = data['input_text']
     style_choice = data['style_choice']
     use_base_style = data['use_base_style']
+    aspect_ratio = data.get('aspectRatio')  # 添加这一行来获取新的 aspectRatio 参数，如果没有就返回None
 
-    image_path = generate_image(input_text, style_choice, use_base_style)
+    image_path = generate_image(input_text, style_choice, use_base_style,aspect_ratio)
 
     if not image_path:   # If the image does not exist, return an error
         return jsonify({'error': 'No image generated.'}), 500
