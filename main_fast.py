@@ -1,7 +1,7 @@
 from flask import Flask, request, send_file, jsonify
 import requests
 import json
-from light import generate_image
+from light_fast import generate_image
 from PIL import Image
 import io
 import base64
