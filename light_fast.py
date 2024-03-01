@@ -5,7 +5,9 @@ import random
 import glob
 import requests
 import gradio as gr
+import logging
 from PIL import Image
+logging.basicConfig(level=logging.DEBUG)
 
 URL = "http://34.70.55.198:8188/prompt"
 INPUT_DIR = "/home/chau9ho/ComfyUI/input"
@@ -49,6 +51,11 @@ def get_latest_image(folder):
     return latest_image
 
 def generate_image(input_text, style_choice, use_base_style, aspect_ratio):
+    logging.info('Generating image with following parameters:')
+    logging.info(f'Input Text: {input_text}')
+    logging.info(f'Style Choice: {style_choice}')
+    logging.info(f'Use Base Style: {use_base_style}')
+    logging.info(f'Aspect Ratio: {aspect_ratio}')
     with open("light.json", "r") as file_json:
         prompt = json.load(file_json)
         
